@@ -28,11 +28,13 @@ jobs:
       - name: Set env
         run: echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Set env
-        run: echo "GITHUB_env=001" >> $GITHUB_ENV
+        run: echo "Test=001" >> $GITHUB_ENV
       - name: Test
         run: echo $GITHUB_SHA_SHORT
       - name: github environment test
         run: cat $GITHUB_ENV
       - name: Del env
-        run: grep -v '^GITHUB_env=' $GITHUB_ENV > temp_env && mv temp_env $GITHUB_ENV
+        run: grep -v '^Test=' $GITHUB_ENV > temp_env && mv temp_env $GITHUB_ENV
+      - name: github environment test result
+        run: cat $GITHUB_ENV
 
